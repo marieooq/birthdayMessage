@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>Birthday Message</title>
+    <meta name="description" content="The HTML5 Herald" />
+    <meta name="author" content="SitePoint" />
+
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Josefin+Sans|Lobster|Supermercado+One&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div id="display-screen"></div>
+
+    <form action="#" method="POST" id="msg-form">
+      <label for="msg">Type your message below.</label>
+      <br />
+      <textarea
+        id="msg"
+        name="user-msg"
+        rows="15"
+        cols="100"
+        value="Type your message."
+        oninput="displayMessage(this.value)"
+      ></textarea>
+    </form>
+    <script src="js/main.js"></script>
+  </body>
+</html>
