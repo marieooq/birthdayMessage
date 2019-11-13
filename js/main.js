@@ -4,6 +4,7 @@ const displayMessage = val => {
   if (displayScreen.className !== "") {
     removeClass();
   }
+
   switchMode(isMode());
   displayScreen.textContent = val;
   captureScreen();
@@ -16,17 +17,11 @@ const isMode = () => {
 
 const removeClass = () => {
   const isClassName = displayScreen.className;
-  switch (isClassName) {
-    case "coloredText":
-      displayScreen.classList.remove("coloredText");
-      break;
-
-    case "textShadow":
-      displayScreen.classList.remove("textShadow");
-      break;
-
-    default:
-      return;
+  if (isClassName.includes("coloredText")) {
+    displayScreen.classList.remove("coloredText");
+  }
+  if (isClassName.includes("textShadow")) {
+    displayScreen.classList.remove("textShadow");
   }
 };
 
@@ -67,14 +62,15 @@ const changeTextShadow = mode => {
 
   if (mode === "neon") {
     displayScreen.classList.add("textShadow");
-    const root = document.documentElement;
-    root.style.setProperty("--textShadowColor", returnRgb());
-  } else {
-    if (displayScreen.className.includes("textShadow") !== -1) {
-      displayScreen.classList.remove("textShadow");
-    } else {
-      return;
+    const textShadowClass = document.getElementsByClassName("textShadow");
+    for (let i = 0; i < textShadowClass.length; i++) {
+      textShadowClass[i].style.textShadow = `2px 2px 15px ${returnRgb()}`;
     }
+  } else {
+    if (displayScreen.className.includes("textShadow")) {
+      displayScreen.classList.remove("textShadow");
+    }
+    displayScreen.style.textShadow = "";
   }
 };
 
