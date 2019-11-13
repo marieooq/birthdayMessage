@@ -1,34 +1,32 @@
 :root {
-  --accentColor: rgb(252, 135, 213);
+  --textShadowColor: rgb(252, 135, 213);
 }
 #display-screen {
   color: #fff;
-  font-family: "Josefin Sans", sans-serif;
-  font-family: "Supermercado One", cursive;
-  font-family: "Lobster", cursive;
   width: 100%;
   min-height: 300px;
   padding: 30px 60px;
-  border: solid 3px #000;
+  /* border: solid 3px rgb(12, 5, 32); */
   background-color: rgb(12, 5, 32);
+  box-shadow: 0px 2px 5px #ccc;
   border-radius: 10px;
   font-size: 30px;
   box-sizing: border-box;
+  /* font-family: "Josefin Sans", sans-serif;
+  font-family: "Supermercado One", cursive;
+  font-family: "Lobster", cursive;
+  font-family: "Ubuntu Mono", monospace;
+  font-family: "Noto Serif", serif; */
 }
 
 .coloredText {
-  color: yellow;
+  color: #fff;
 }
 
 .textShadow {
-  /* text-shadow: 2px 2px 2px #000; */
-  text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em var(--accentColor),
-    0 0 0.5em var(--accentColor), 0 0 0.1em var(--accentColor), 0 10px 3px #000;
-}
-
-.textShadowSample {
-  text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em var(--accentColor),
-    0 0 0.5em #ff4444, 0 0 0.1em #ff4444, 0 10px 3px #000;
+  text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em var(--textShadowColor),
+    0 0 0.5em var(--textShadowColor), 0 0 0.1em var(--textShadowColor),
+    0 10px 3px #000;
 }
 
 form#msg-form {
