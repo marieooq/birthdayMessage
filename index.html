@@ -16,10 +16,15 @@
   </head>
 
   <body>
+    <p id="sample-text">Sample text</p>
     <div id="display-screen"></div>
 
     <form action="#" method="POST" id="msg-form">
-      <label for="msg">Type your message below.</label>
+      <select name="display-mode" onchange="isMode()" id="mode">
+        <option value="developer">Developer</option>
+        <option value="neon" selected>Neon</option>
+      </select>
+      <!-- <label for="msg">Type your message below.</label> -->
       <br />
       <textarea
         id="msg"
