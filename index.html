@@ -4,13 +4,13 @@
   <head>
     <meta charset="utf-8" />
 
-    <title>Birthday Message</title>
+    <title>Message</title>
     <meta name="description" content="The HTML5 Herald" />
     <meta name="author" content="SitePoint" />
 
     <link rel="stylesheet" href="css/styles.css" />
     <link
-      href="https://fonts.googleapis.com/css?family=Josefin+Sans|Lobster|Supermercado+One&display=swap"
+      href="https://fonts.googleapis.com/css?family=Noto+Serif|Ubuntu+Mono|Josefin+Sans|Lobster|Supermercado+One&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -19,7 +19,12 @@
     <div id="display-screen"></div>
 
     <form action="#" method="POST" id="msg-form">
-      <label for="msg">Type your message below.</label>
+      <select name="display-mode" onchange="isMode()" id="mode">
+        <option value="developer">Developer</option>
+        <option value="neon" selected>Neon</option>
+        <option value="note">Note</option>
+      </select>
+      <!-- <label for="msg">Type your message below.</label> -->
       <br />
       <textarea
         id="msg"
@@ -28,6 +33,7 @@
         cols="100"
         value="Type your message."
         oninput="displayMessage(this.value)"
+        placeholder="Type your message here."
       ></textarea>
     </form>
     <script src="js/main.js"></script>
