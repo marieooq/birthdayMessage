@@ -1,34 +1,17 @@
 const displayScreen = document.getElementById("display-screen");
 
 const displayMessage = val => {
-  console.log("displayMessage() is excecuted");
-  console.log(`isMode returns ${isMode()}`);
-
   if (displayScreen.className !== "") {
     removeClass();
   }
 
-  switch (isMode()) {
-    case "developer":
-      changeTextColor(isMode());
-      changeTextShadow(isMode());
-      break;
-
-    case "neon":
-      changeTextColor(isMode());
-      changeTextShadow(isMode());
-      break;
-
-    default:
-      console.log("isMode returns undefined");
-  }
+  switchMode(isMode());
 
   displayScreen.textContent = val;
 };
 
 const isMode = () => {
   const mode = document.getElementById("mode").value;
-  console.log(mode);
   return mode;
 };
 
@@ -44,7 +27,7 @@ const removeClass = () => {
       break;
 
     default:
-      console.log("No class is attached.");
+      return;
   }
 };
 
@@ -91,10 +74,61 @@ const changeTextShadow = mode => {
     case "neon":
       displayScreen.classList.add("textShadow");
       const root = document.documentElement;
-      root.style.setProperty("--accentColor", returnRgb());
+      root.style.setProperty("--textShadowColor", returnRgb());
       break;
 
     default:
       console.log("mode is undefined");
+  }
+};
+
+const changeFontFamily = mode => {
+  switch (mode) {
+    case "developer":
+      displayScreen.style.fontFamily = '"Ubuntu Mono", monospace';
+      break;
+
+    case "neon":
+      displayScreen.style.fontFamily = '"Lobster", cursive';
+      break;
+
+    default:
+      console.log("mode is undefined");
+  }
+};
+
+const changeBackground = mode => {
+  switch (mode) {
+    case "developer":
+      displayScreen.style.backgroundColor = "rgb(12, 5, 32)";
+      break;
+
+    case "neon":
+      displayScreen.style.backgroundColor = "rgb(12, 5, 32)";
+      break;
+
+    default:
+      console.log("mode is undefined");
+  }
+};
+
+const switchMode = mode => {
+  switch (mode) {
+    case "developer":
+      changeTextColor(mode);
+      changeTextShadow(mode);
+      changeFontFamily(mode);
+      changeBackground(mode);
+      break;
+
+    case "neon":
+      changeTextColor(mode);
+      changeTextShadow(mode);
+      changeFontFamily(mode);
+      changeBackground(mode);
+      break;
+
+    default:
+      console.log("isMode returns undefined");
   }
 };
