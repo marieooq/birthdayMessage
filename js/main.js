@@ -65,31 +65,16 @@ const changeTextShadow = mode => {
     return rgb;
   };
 
-  switch (mode) {
-    case "developer":
-      if (displayScreen.className.includes("textShadow") !== -1) {
-        displayScreen.classList.remove("textShadow");
-      } else {
-        return;
-      }
-      break;
-
-    case "neon":
-      displayScreen.classList.add("textShadow");
-      const root = document.documentElement;
-      root.style.setProperty("--textShadowColor", returnRgb());
-      break;
-
-    case "note":
-      if (displayScreen.className.includes("textShadow") !== -1) {
-        displayScreen.classList.remove("textShadow");
-      } else {
-        return;
-      }
-      break;
-
-    default:
-      console.log("mode is undefined");
+  if (mode === "neon") {
+    displayScreen.classList.add("textShadow");
+    const root = document.documentElement;
+    root.style.setProperty("--textShadowColor", returnRgb());
+  } else {
+    if (displayScreen.className.includes("textShadow") !== -1) {
+      displayScreen.classList.remove("textShadow");
+    } else {
+      return;
+    }
   }
 };
 
@@ -158,8 +143,6 @@ const switchMode = mode => {
       console.log("isMode returns undefined");
   }
 };
-
-// window.onload = () => {};
 
 const captureScreen = () => {
   html2canvas(document.getElementById("display-screen"), {
