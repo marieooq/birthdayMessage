@@ -1,4 +1,5 @@
 const displayScreen = document.getElementById("display-screen");
+const captureArr = [];
 
 const displayMessage = val => {
   if (displayScreen.className !== "") {
@@ -144,6 +145,8 @@ const captureScreen = () => {
   html2canvas(document.getElementById("display-screen"), {
     onrendered: canvas => {
       const imgData = canvas.toDataURL();
+      captureArr.push(imgData);
+      console.log(captureArr);
       document.getElementById("result").src = imgData;
       document.getElementById("ss").href = imgData;
     }
