@@ -10,22 +10,18 @@ const displayMessage = val => {
 
   switch (isMode()) {
     case "developer":
-      changeTextColor();
+      changeTextColor(isMode());
+      changeTextShadow(isMode());
       break;
 
     case "neon":
-      changeTextShadow();
+      changeTextColor(isMode());
+      changeTextShadow(isMode());
       break;
 
     default:
       console.log("isMode returns undefined");
   }
-
-  // displayScreen.classList.add("coloredText");
-  // changeTextColor();
-
-  // displayScreen.classList.add("textShadow");
-  // changeTextShadow();
 
   displayScreen.textContent = val;
 };
@@ -52,23 +48,27 @@ const removeClass = () => {
   }
 };
 
-const removeTextColor = () => {};
-
-const changeTextColor = () => {
-  console.log("inside changeTextColor");
+const changeTextColor = mode => {
   displayScreen.classList.add("coloredText");
   const coloredTextClass = document.getElementsByClassName("coloredText");
 
   for (let i = 0; i < coloredTextClass.length; i++) {
-    coloredTextClass[i].style.color = "#00c200";
+    switch (mode) {
+      case "developer":
+        coloredTextClass[i].style.color = "#00c200";
+        break;
+
+      case "neon":
+        coloredTextClass[i].style.color = "#fff";
+        break;
+
+      default:
+        console.log("mode is undefined");
+    }
   }
 };
 
-const changeTextShadow = () => {
-  console.log("inside changeTextShadow");
-  displayScreen.classList.add("textShadow");
-  const textShadowClass = document.getElementsByClassName("textShadow");
-
+const changeTextShadow = mode => {
   const returnRanNum = () => {
     const runNum = Math.floor(Math.random() * 360);
     return runNum;
@@ -79,7 +79,22 @@ const changeTextShadow = () => {
     return rgb;
   };
 
-  const root = document.documentElement;
-  const body = document.body;
-  root.style.setProperty("--accentColor", returnRgb());
+  switch (mode) {
+    case "developer":
+      if (displayScreen.className.includes("textShadow") !== -1) {
+        displayScreen.classList.remove("textShadow");
+      } else {
+        return;
+      }
+      break;
+
+    case "neon":
+      displayScreen.classList.add("textShadow");
+      const root = document.documentElement;
+      root.style.setProperty("--accentColor", returnRgb());
+      break;
+
+    default:
+      console.log("mode is undefined");
+  }
 };
