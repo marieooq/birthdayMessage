@@ -4,10 +4,9 @@ const displayMessage = val => {
   if (displayScreen.className !== "") {
     removeClass();
   }
-
   switchMode(isMode());
-
   displayScreen.textContent = val;
+  captureScreen();
 };
 
 const isMode = () => {
@@ -158,4 +157,16 @@ const switchMode = mode => {
     default:
       console.log("isMode returns undefined");
   }
+};
+
+// window.onload = () => {};
+
+const captureScreen = () => {
+  html2canvas(document.getElementById("display-screen"), {
+    onrendered: canvas => {
+      const imgData = canvas.toDataURL();
+      document.getElementById("result").src = imgData;
+      document.getElementById("ss").href = imgData;
+    }
+  });
 };
