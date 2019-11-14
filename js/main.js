@@ -45,6 +45,10 @@ const changeTextColor = mode => {
         coloredTextClass[i].style.color = "#292929";
         break;
 
+      case "pop":
+        coloredTextClass[i].style.color = "#292929";
+        break;
+
       default:
         console.log("mode is undefined");
     }
@@ -90,6 +94,10 @@ const changeFontFamily = mode => {
       displayScreen.style.fontFamily = '"Noto Serif", serif';
       break;
 
+    case "pop":
+      displayScreen.style.fontFamily = "'Anton', sans-serif";
+      break;
+
     default:
       console.log("mode is undefined");
   }
@@ -107,6 +115,10 @@ const changeBackground = mode => {
 
     case "note":
       displayScreen.style.backgroundColor = "#fff";
+      break;
+
+    case "pop":
+      displayScreen.style.backgroundColor = "#fef734";
       break;
 
     default:
@@ -131,6 +143,13 @@ const switchMode = mode => {
       break;
 
     case "note":
+      changeTextColor(mode);
+      changeTextShadow(mode);
+      changeFontFamily(mode);
+      changeBackground(mode);
+      break;
+
+    case "pop":
       changeTextColor(mode);
       changeTextShadow(mode);
       changeFontFamily(mode);
