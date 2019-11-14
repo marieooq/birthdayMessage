@@ -1,10 +1,16 @@
 :root {
   /* --textShadowColor: rgb(252, 135, 213); */
 }
+
+#container {
+  width: 1024px;
+  margin: 0 auto;
+}
 #display-screen {
   color: #fff;
-  width: 100%;
-  min-height: 300px;
+  width: 512px;
+  height: 256px;
+  margin: 0 auto;
   padding: 30px 60px;
   border: solid 2px rgba(204, 204, 204, 0.7);
   background-color: rgb(12, 5, 32);
@@ -34,5 +40,9 @@
 }
 
 form#msg-form {
-  margin-top: 60px;
+  margin-top: 30px;
+}
+
+textarea#msg {
+  font-size: 30px;
 }

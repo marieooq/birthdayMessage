@@ -1,5 +1,6 @@
 const displayScreen = document.getElementById("display-screen");
 const frames = [];
+let gifAnimation;
 
 const displayMessage = val => {
   if (displayScreen.className !== "") {
@@ -153,7 +154,7 @@ const captureScreen = () => {
       frames.push(imgTag);
       console.log(frames);
 
-      document.getElementById("result").src = imgData;
+      // document.getElementById("result").src = imgData;
       document.getElementById("ss").href = imgData;
     }
   });
@@ -189,13 +190,19 @@ const createGIF = () => {
 
   //create a gif animation
   encoder.finish();
-  document.getElementById("anime_gif").src =
+  gifAnimation =
     "data:image/gif;base64," + encode64(encoder.stream().getData());
-  document.getElementById("download").style.display = "block";
+  document.getElementById("anime_gif").src = gifAnimation;
+  // document.getElementById("download").style.display = "block";
 
   // const downloadGIF = () => {
   //   encoder.download("download.gif");
   // };
-  document.getElementById("ssgif").href =
-    "data:image/gif;base64," + encode64(encoder.stream().getData());
+  document.getElementById("ssgif").href = gifAnimation;
+};
+
+////SAVE ON LOCALSTRAGE//////////////////////////////////////////////////
+const setLocalStrage = () => {
+  console.log("setLocalStrage() is executed");
+  localStorage.setItem("gif1", gifAnimation);
 };

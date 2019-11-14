@@ -16,35 +16,36 @@
   </head>
 
   <body>
-    <div id="display-screen"></div>
+    <div id="container">
+      <div id="display-screen"></div>
 
-    <br />
-
-    <p>This is an image that has been captured</p>
-    <img src="" id="result" />
-
-    <a href="" id="ss" download="html_ss.png">DOWNLOAD</a>
-
-    <form action="#" method="POST" id="msg-form">
-      <select name="display-mode" onchange="isMode()" id="mode">
-        <option value="developer">Developer</option>
-        <option value="neon" selected>Neon</option>
-        <option value="note">Note</option>
-      </select>
-      <!-- <label for="msg">Type your message below.</label> -->
       <br />
-      <textarea
-        id="msg"
-        name="user-msg"
-        rows="15"
-        cols="100"
-        value="Type your message."
-        oninput="displayMessage(this.value)"
-        placeholder="Type your message here."
-      ></textarea>
-    </form>
 
-    <!-- <p>
+      <!-- <p>This is an image that has been captured</p>
+      <img src="" id="result" /> -->
+
+      <!-- <a href="" id="ss" download="html_ss.png">DOWNLOAD</a> -->
+
+      <form action="#" method="POST" id="msg-form">
+        <select name="display-mode" onchange="isMode()" id="mode">
+          <option value="developer">Developer</option>
+          <option value="neon" selected>Neon</option>
+          <option value="note">Note</option>
+        </select>
+        <!-- <label for="msg">Type your message below.</label> -->
+        <br />
+        <textarea
+          id="msg"
+          name="user-msg"
+          rows="5"
+          cols="28"
+          value="Type your message."
+          oninput="displayMessage(this.value)"
+          placeholder="Type your message here."
+        ></textarea>
+      </form>
+
+      <!-- <p>
       速度：<input
         type="range"
         id="anime_speed"
@@ -53,24 +54,35 @@
         max="500"
       />
     </p> -->
-    <p><button onclick="createGIF();">アニメGIFを作成する</button></p>
+      <p><button onclick="createGIF();">アニメGIFを作成する</button></p>
 
-    <canvas id="canvas" style="display:none;"></canvas>
+      <canvas id="canvas" style="display:none;"></canvas>
 
-    <p>
-      <img
-        id="anime_gif"
-        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-      />
-    </p>
+      <p>
+        <img
+          id="anime_gif"
+          src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+        />
+      </p>
 
-    <p>
+      <!-- <p>
       <button id="download" onclick="downloadGIF();" style="display:none;">
         ダウンロード
       </button>
-    </p>
+    </p> -->
 
-    <a href="" id="ssgif" download="message_gif.png">DOWNLOAD</a>
+      <a href="" id="ssgif" download="message_gif.png">DOWNLOAD</a>
+
+      <button onclick="setLocalStrage()">SAVE GIF</button>
+
+      <!-- <a href="http://twitter.com/share?url=http://qiita.com/katsuma">Twitter</a>
+
+    <a href="http://line.me/R/msg/text/?http://qiita.com/katsuma">LINE</a>
+
+    <a
+      href="https://www.facebook.com/sharer/sharer.php?u=http://qiita.com/katsuma"
+      >Facebook</a -->
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
     <script src="js/LZWEncoder.js"></script>
