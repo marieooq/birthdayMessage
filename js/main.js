@@ -1,4 +1,5 @@
 const displayScreen = document.getElementById("display-screen");
+const frames = [];
 
 const displayMessage = val => {
   if (displayScreen.className !== "") {
@@ -6,8 +7,8 @@ const displayMessage = val => {
   }
 
   switchMode(isMode());
-
   displayScreen.textContent = val;
+  captureScreen();
 };
 
 const isMode = () => {
@@ -17,17 +18,11 @@ const isMode = () => {
 
 const removeClass = () => {
   const isClassName = displayScreen.className;
-  switch (isClassName) {
-    case "coloredText":
-      displayScreen.classList.remove("coloredText");
-      break;
-
-    case "textShadow":
-      displayScreen.classList.remove("textShadow");
-      break;
-
-    default:
-      return;
+  if (isClassName.includes("coloredText")) {
+    displayScreen.classList.remove("coloredText");
+  }
+  if (isClassName.includes("textShadow")) {
+    displayScreen.classList.remove("textShadow");
   }
 };
 
@@ -66,31 +61,17 @@ const changeTextShadow = mode => {
     return rgb;
   };
 
-  switch (mode) {
-    case "developer":
-      if (displayScreen.className.includes("textShadow") !== -1) {
-        displayScreen.classList.remove("textShadow");
-      } else {
-        return;
-      }
-      break;
-
-    case "neon":
-      displayScreen.classList.add("textShadow");
-      const root = document.documentElement;
-      root.style.setProperty("--textShadowColor", returnRgb());
-      break;
-
-    case "note":
-      if (displayScreen.className.includes("textShadow") !== -1) {
-        displayScreen.classList.remove("textShadow");
-      } else {
-        return;
-      }
-      break;
-
-    default:
-      console.log("mode is undefined");
+  if (mode === "neon") {
+    displayScreen.classList.add("textShadow");
+    const textShadowClass = document.getElementsByClassName("textShadow");
+    for (let i = 0; i < textShadowClass.length; i++) {
+      textShadowClass[i].style.textShadow = `2px 2px 15px ${returnRgb()}`;
+    }
+  } else {
+    if (displayScreen.className.includes("textShadow")) {
+      displayScreen.classList.remove("textShadow");
+    }
+    displayScreen.style.textShadow = "";
   }
 };
 
@@ -158,4 +139,63 @@ const switchMode = mode => {
     default:
       console.log("isMode returns undefined");
   }
+};
+
+////CAPTURE/////////////////////////////////////////////////////
+
+const captureScreen = () => {
+  html2canvas(document.getElementById("display-screen"), {
+    onrendered: canvas => {
+      const imgData = canvas.toDataURL();
+      const imgTag = document.createElement("img");
+      imgTag.src = `${imgData}`;
+      // frames.push(imgData);
+      frames.push(imgTag);
+      console.log(frames);
+
+      document.getElementById("result").src = imgData;
+      document.getElementById("ss").href = imgData;
+    }
+  });
+};
+
+////CREATE GIF//////////////////////////////////////////////////
+
+let encoder;
+
+const createGIF = () => {
+  //get canvas
+  const canvas = document.getElementById("canvas");
+  const ctx = canvas.getContext("2d");
+
+  //initiate GiTEncoder
+  encoder = new GIFEncoder();
+  encoder.setRepeat(0); //infinite loop
+  // encoder.setDelay(document.getElementById("anime_speed").value);
+  encoder.start();
+
+  //get images
+  // frames = document.getElementById("anime").getElementsByTagName("img");
+
+  //fit the size of canvas to the first image
+  canvas.width = frames[0].naturalWidth;
+  canvas.height = frames[0].naturalHeight;
+
+  //draw all the images to the canvas
+  for (let frame_no = 0; frame_no < frames.length; frame_no++) {
+    ctx.drawImage(frames[frame_no], 0, 0);
+    encoder.addFrame(ctx);
+  }
+
+  //create a gif animation
+  encoder.finish();
+  document.getElementById("anime_gif").src =
+    "data:image/gif;base64," + encode64(encoder.stream().getData());
+  document.getElementById("download").style.display = "block";
+
+  // const downloadGIF = () => {
+  //   encoder.download("download.gif");
+  // };
+  document.getElementById("ssgif").href =
+    "data:image/gif;base64," + encode64(encoder.stream().getData());
 };

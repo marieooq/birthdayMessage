@@ -18,6 +18,13 @@
   <body>
     <div id="display-screen"></div>
 
+    <br />
+
+    <p>This is an image that has been captured</p>
+    <img src="" id="result" />
+
+    <a href="" id="ss" download="html_ss.png">DOWNLOAD</a>
+
     <form action="#" method="POST" id="msg-form">
       <select name="display-mode" onchange="isMode()" id="mode">
         <option value="developer">Developer</option>
@@ -36,6 +43,40 @@
         placeholder="Type your message here."
       ></textarea>
     </form>
+
+    <!-- <p>
+      速度：<input
+        type="range"
+        id="anime_speed"
+        value="500"
+        min="100"
+        max="500"
+      />
+    </p> -->
+    <p><button onclick="createGIF();">アニメGIFを作成する</button></p>
+
+    <canvas id="canvas" style="display:none;"></canvas>
+
+    <p>
+      <img
+        id="anime_gif"
+        src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+      />
+    </p>
+
+    <p>
+      <button id="download" onclick="downloadGIF();" style="display:none;">
+        ダウンロード
+      </button>
+    </p>
+
+    <a href="" id="ssgif" download="message_gif.png">DOWNLOAD</a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+    <script src="js/LZWEncoder.js"></script>
+    <script src="js/GIFEncoder.js"></script>
+    <script src="js/NeuQuant.js"></script>
+    <script src="js/b64.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>
