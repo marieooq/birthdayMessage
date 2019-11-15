@@ -11,7 +11,6 @@ const displayMessage = val => {
   if (displayScreen.className !== "") {
     removeClass();
   }
-
   switchMode(isMode());
   displayScreen.textContent = val;
 };
@@ -22,12 +21,10 @@ const isMode = () => {
 };
 
 const startRec = () => {
-  console.log("inside startRec()");
   isRec = true;
   const textArea = document.getElementById("textareaMsg");
   textArea.value = "";
   displayScreen.textContent = "";
-  // initiateRec();
 };
 
 const removeClass = () => {
@@ -185,8 +182,6 @@ const captureScreen = () => {
       frames.push(imgTag);
 
       console.log(frames);
-
-      document.getElementById("ss").href = imgData;
     }
   });
 };
