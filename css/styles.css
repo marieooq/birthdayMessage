@@ -17,7 +17,7 @@
 #inner {
   width: 512px;
   margin: 0 auto;
-  background-color: aquamarine;
+  /* background-color: aquamarine; */
 }
 #display-screen {
   color: #fff;
