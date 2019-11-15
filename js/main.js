@@ -237,10 +237,11 @@ const upload = async file => {
   console.log(file);
   const cloudinary = new Cloudinary();
   const res = await cloudinary.uploaded(file);
-  console.log(res);
+  console.log(res.data.secure_url);
+  const imgURL = res.data.secure_url;
 
   const twitter = new ShareTwitter();
-  twitter.createShareTwitterBtn("https://www.abc.com");
+  twitter.createShareTwitterBtn(imgURL);
 };
 
 ////Share//////////////////////////////////////////////////
