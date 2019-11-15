@@ -233,10 +233,11 @@ const createGIF = () => {
 };
 
 ////UPLOAD IMAGES//////////////////////////////////////////////////
-const upload = file => {
+const upload = async file => {
   console.log(file);
   const cloudinary = new Cloudinary();
-  cloudinary.uploaded(file);
+  const res = await cloudinary.uploaded(file);
+  console.log(res);
 
   const twitter = new ShareTwitter();
   twitter.createShareTwitterBtn("https://www.abc.com");

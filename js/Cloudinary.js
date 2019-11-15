@@ -9,23 +9,19 @@ class Cloudinary {
     this.clUrl = `https://api.cloudinary.com/v1_1/${this.cloudinary.cloudName}/image/upload`;
   }
 
-  uploaded(file) {
+  async uploaded(file) {
     const formData = new FormData();
     formData.append("file", file[0]);
     formData.append("upload_preset", this.cloudinary.uploadPreset);
     formData.append("tags", "msgif-uploaded");
-    console.log("here");
+
     //excecute api
-    axios
-      .post(this.clUrl, formData)
-      .then(res => {
-        console.log(res);
-        console.log("Success!");
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    try {
+      const res = await axios.post(this.clUrl, formData);
+      console.log(res);
+      return res;
+    } catch (err) {
+      console.log(err);
+    }
   }
 }
-
-// module.exports = Cloudinary;
