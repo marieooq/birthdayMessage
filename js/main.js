@@ -232,8 +232,10 @@ const createGIF = () => {
   document.getElementById("ssgif").href = gifAnimation;
 };
 
-////SAVE ON LOCALSTRAGE//////////////////////////////////////////////////
-const setLocalStrage = () => {
-  console.log("setLocalStrage() is executed");
-  localStorage.setItem("gif1", gifAnimation);
+////UPLOAD IMAGES//////////////////////////////////////////////////
+// let Cloudinary = require("./Cloudinary");
+const upload = file => {
+  console.log(file);
+  const cloudinary = new Cloudinary();
+  cloudinary.uploaded(file);
 };

@@ -7,6 +7,14 @@
     <title>Message</title>
     <meta name="description" content="The HTML5 Herald" />
     <meta name="author" content="SitePoint" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+    <script src="js/LZWEncoder.js"></script>
+    <script src="js/GIFEncoder.js"></script>
+    <script src="js/NeuQuant.js"></script>
+    <script src="js/b64.js"></script>
+    <script src="js/Cloudinary.js"></script>
+    <script src="js/main.js"></script>
 
     <link rel="stylesheet" href="css/styles.css" />
     <link
@@ -69,15 +77,16 @@
         />
       </p>
 
-      <!-- <p>
-      <button id="download" onclick="downloadGIF();" style="display:none;">
-        ダウンロード
-      </button>
-    </p> -->
 
       <a href="" id="ssgif" download="message_gif.png">DOWNLOAD</a>
 
-      <button onclick="setLocalStrage()">SAVE GIF</button>
+      <br>
+
+
+      <input type="file" onchange="upload(this.files)" name="uploadImg" id="uploadImg">
+
+
+
 
       <!-- <a href="http://twitter.com/share?url=http://qiita.com/katsuma">Twitter</a>
 
@@ -89,11 +98,5 @@
       </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
-    <script src="js/LZWEncoder.js"></script>
-    <script src="js/GIFEncoder.js"></script>
-    <script src="js/NeuQuant.js"></script>
-    <script src="js/b64.js"></script>
-    <script src="js/main.js"></script>
   </body>
 </html>
