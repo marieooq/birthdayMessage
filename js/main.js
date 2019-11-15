@@ -1,20 +1,33 @@
 const displayScreen = document.getElementById("display-screen");
+let isRec = false;
+// let initialCount = 0;
 const frames = [];
 let gifAnimation;
 
 const displayMessage = val => {
+  if (isRec) {
+    captureScreen();
+  }
   if (displayScreen.className !== "") {
     removeClass();
   }
 
   switchMode(isMode());
   displayScreen.textContent = val;
-  captureScreen();
 };
 
 const isMode = () => {
   const mode = document.getElementById("mode").value;
   return mode;
+};
+
+const startRec = () => {
+  console.log("inside startRec()");
+  isRec = true;
+  const textArea = document.getElementById("textareaMsg");
+  textArea.value = "";
+  displayScreen.textContent = "";
+  // initiateRec();
 };
 
 const removeClass = () => {
@@ -169,11 +182,10 @@ const captureScreen = () => {
       const imgData = canvas.toDataURL();
       const imgTag = document.createElement("img");
       imgTag.src = `${imgData}`;
-      // frames.push(imgData);
       frames.push(imgTag);
+
       console.log(frames);
 
-      // document.getElementById("result").src = imgData;
       document.getElementById("ss").href = imgData;
     }
   });

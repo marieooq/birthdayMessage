@@ -36,11 +36,11 @@
 
         <br />
         <textarea
-          id="msg"
+          id="textareaMsg"
           name="user-msg"
           rows="5"
           cols="26"
-          value="Type your message."
+          value=""
           maxlength="140"
           oninput="displayMessage(this.value)"
           placeholder="Type your message here."
@@ -56,6 +56,8 @@
         max="500"
       />
     </p> -->
+
+      <button id="record-btn" onclick="startRec()">RECORD</button>
       <p><button onclick="createGIF();">アニメGIFを作成する</button></p>
 
       <canvas id="canvas" style="display:none;"></canvas>
