@@ -233,9 +233,13 @@ const createGIF = () => {
 };
 
 ////UPLOAD IMAGES//////////////////////////////////////////////////
-// let Cloudinary = require("./Cloudinary");
 const upload = file => {
   console.log(file);
   const cloudinary = new Cloudinary();
   cloudinary.uploaded(file);
+
+  const twitter = new ShareTwitter();
+  twitter.createShareTwitterBtn("https://www.abc.com");
 };
+
+////Share//////////////////////////////////////////////////

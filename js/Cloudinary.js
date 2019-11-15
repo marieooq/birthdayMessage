@@ -16,9 +16,15 @@ class Cloudinary {
     formData.append("tags", "msgif-uploaded");
     console.log("here");
     //excecute api
-    axios.post(this.clUrl, formData).then(res => {
-      console.log("Success!");
-    });
+    axios
+      .post(this.clUrl, formData)
+      .then(res => {
+        console.log(res);
+        console.log("Success!");
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 }
 
