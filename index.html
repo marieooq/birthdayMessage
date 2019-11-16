@@ -15,7 +15,7 @@
     <script src="js/b64.js"></script>
     <script src="js/Cloudinary.js"></script>
     <script src="js/ShareTwitter.js"></script>
-  
+
     <link rel="stylesheet" href="css/styles.css" />
     <link
       href="https://fonts.googleapis.com/css?family=Anton|Noto+Serif|Bebas+Neue|Ubuntu+Mono|Josefin+Sans|Lobster|Supermercado+One&display=swap"
@@ -26,36 +26,34 @@
   <body>
     <div id="container">
       <div id="inner">
-      <div id="display-screen" className="default"></div>
-
-      <br />
-
-      <form action="#" method="POST" id="msg-form">
-
-        <div class="selectdiv">
-          <select name="display-mode" onchange="isMode()" id="mode">
-            <option value="developer">Developer</option>
-            <option value="neon" selected>Neon</option>
-            <option value="note">Note</option>
-            <option value="pop">Pop</Pption>
-          </select>
-        </div>
-
+        <div id="display-screen" className="default"></div>
 
         <br />
-        <textarea
-          id="textareaMsg"
-          name="user-msg"
-          rows="5"
-          cols="26"
-          value=""
-          maxlength="140"
-          oninput="displayMessage(this.value)"
-          placeholder="Type your message here."
-        ></textarea>
-      </form>
 
-      <!-- <p>
+        <form action="#" method="POST" id="msg-form">
+          <div class="selectdiv">
+            <select name="display-mode" onchange="isMode()" id="mode">
+              <option value="developer">Developer</option>
+              <option value="neon" selected>Neon</option>
+              <option value="note">Note</option>
+              <option value="pop">Pop</option>
+            </select>
+          </div>
+
+          <br />
+          <textarea
+            id="textareaMsg"
+            name="user-msg"
+            rows="5"
+            cols="26"
+            value=""
+            maxlength="140"
+            oninput="displayMessage(this.value)"
+            placeholder="Type your message here."
+          ></textarea>
+        </form>
+
+        <!-- <p>
       速度：<input
         type="range"
         id="anime_speed"
@@ -65,33 +63,34 @@
       />
     </p> -->
 
-      <button id="record-btn" onclick="startRec()">RECORD</button>
-      <p><button onclick="createGIF();">アニメGIFを作成する</button></p>
+        <button id="record-btn" onclick="startRec()">RECORD</button>
+        <p><button onclick="createGIF();">アニメGIFを作成する</button></p>
 
-      <canvas id="canvas" style="display:none;"></canvas>
+        <canvas id="canvas" style="display:none;"></canvas>
 
-      <p>
-        <img
-          id="anime_gif"
-          src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+        <p>
+          <img
+            id="anime_gif"
+            src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+          />
+        </p>
+
+        <a href="" id="ssgif" download="message_gif.png">DOWNLOAD</a>
+
+        <br />
+
+        <input
+          type="file"
+          onchange="upload(this.files)"
+          name="uploadImg"
+          id="uploadImg"
         />
-      </p>
 
-
-      <a href="" id="ssgif" download="message_gif.png">DOWNLOAD</a>
-
-      <br>
-
-
-      <input type="file" onchange="upload(this.files)" name="uploadImg" id="uploadImg">
-
-
-
-      <br>
-      <br>
-      <div id="twitter-div"></div>
-      <br>
-      <br>
+        <br />
+        <br />
+        <div id="twitter-div"></div>
+        <br />
+        <br />
       </div>
     </div>
 
